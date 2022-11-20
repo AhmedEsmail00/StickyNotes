@@ -1,0 +1,15 @@
+.signIN input{
+  color: black !important;
+
+}
+.inputs p{
+  color: red !important;
+  font-weight: bold;
+}
+#signin{
+  position: absolute;
+  width: 98vw;
+  height: 80vh;
+  z-index: -1;
+
+}

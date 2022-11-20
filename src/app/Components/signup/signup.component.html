@@ -1,0 +1,65 @@
+<div id="signup" class="d-flex align-item-center" ></div>
+
+<div class="container mx-auto w-75">
+
+  <div class="regester-form mx-auto w-75 my-5">
+    <h2>Sign Up </h2>
+  <form  [formGroup]="signUpForm" (ngSubmit)="signUp()" class="signUp">
+
+    <div class="group-input" >
+      <label >First Name</label>
+      <input type="text" class="form-control" formControlName="first_name">
+      <div *ngIf="signUpForm.controls['first_name'].invalid && signUpForm.controls['first_name'].touched " class="text-danger  inputs">
+        <p *ngIf="signUpForm.controls['first_name'].errors?.['required']">first name required</p>
+        <p *ngIf="signUpForm.controls['first_name'].errors?.['minlength']">first name min length 3</p>
+        <p *ngIf="signUpForm.controls['first_name'].errors?.['maxlength']">first name max length 10</p>
+      </div>
+    </div>
+
+    <div class="group-input" >
+      <label >Last Name</label>
+      <input type="text" class="form-control"  formControlName="last_name">
+      <div *ngIf="signUpForm.controls['last_name'].invalid && signUpForm.controls['last_name'].touched " class="text-danger  inputs">
+        <p *ngIf="signUpForm.controls['last_name'].errors?.['required']">last name  required</p>
+        <p *ngIf="signUpForm.controls['last_name'].errors?.['minlength']">last name min length 3</p>
+        <p *ngIf="signUpForm.controls['last_name'].errors?.['maxlength']">last name max length 10</p>
+      </div>
+    </div>
+
+    <div class="group-input" >
+      <label > Age</label>
+      <input type="number" class="form-control" formControlName="age" >
+      <div *ngIf="signUpForm.controls['age'].invalid && signUpForm.controls['age'].touched " class="text-danger inputs">
+        <p *ngIf="signUpForm.controls['age'].errors?.['required']">age is required</p>
+        <p *ngIf="signUpForm.controls['age'].errors?.['min']">minimum age is 16</p>
+        <p *ngIf="signUpForm.controls['age'].errors?.['max']">maximum age is 60</p>
+      </div>
+    </div>
+
+    <div class="group-input" >
+      <label >Email</label>
+      <input type="email" class="form-control"  formControlName="email">
+      <div *ngIf="signUpForm.controls['email'].invalid && signUpForm.controls['email'].touched " class="text-danger inputs">
+        <p *ngIf="signUpForm.controls['email'].errors?.['required']">email is required</p>
+        <p *ngIf="signUpForm.controls['email'].errors?.['email']">email not valid</p>
+      </div>
+    </div>
+
+
+    <div class="group-input" >
+      <label >Password</label>
+      <input type="password" class="form-control" formControlName="password" >
+      <div *ngIf="signUpForm.controls['password'].invalid && signUpForm.controls['password'].touched " class="text-danger  inputs">
+        <p *ngIf="signUpForm.controls['password'].errors?.['required']">password is required</p>
+        <p *ngIf="signUpForm.controls['password'].errors?.['pattern']">password not valid</p>
+      </div>
+    </div>
+    <button [disabled]="signUpForm.invalid" type="submit" class="btn btn-primary my-3 d-flex p-3 mx-auto">Submit</button>
+
+
+  </form>
+
+  </div>
+
+
+</div>

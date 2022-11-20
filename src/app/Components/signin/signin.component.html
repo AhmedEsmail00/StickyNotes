@@ -1,0 +1,32 @@
+
+<div id="signin" class="d-flex align-item-center" ></div>
+<div class="m-auto w-75 my-3 mt-5">
+  <h2>SIGN IN </h2>
+<form  [formGroup]="signInForm" class="signIN"  (ngSubmit)="signIn()">
+
+
+  <div class="group-input" >
+    <label >Email</label>
+    <input type="email" class="form-control"  formControlName="email">
+    <div *ngIf="signInForm.controls['email'].invalid && signInForm.controls['email'].touched " class="text-danger my-1 inputs ">
+      <p *ngIf="signInForm.controls['email'].errors?.['required']">email is required</p>
+      <p *ngIf="signInForm.controls['email'].errors?.['email']">email not valid</p>
+    </div>
+  </div>
+
+
+  <div class="group-input" >
+    <label >Password</label>
+    <input type="password" class="form-control" formControlName="password" >
+    <div *ngIf="signInForm.controls['password'].invalid && signInForm.controls['password'].touched " class="text-danger my-1 inputs">
+      <p *ngIf="signInForm.controls['password'].errors?.['required']">password is required</p>
+      <p *ngIf="signInForm.controls['password'].errors?.['pattern']">password not valid</p>
+    </div>
+  </div>
+  <button [disabled]="signInForm.invalid" type="submit" class="btn btn-primary my-3 d-flex p-3 mx-auto">Submit</button>
+</form>
+
+</div>
+
+
+

@@ -1,0 +1,99 @@
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+<div id="profile" class="d-flex align-item-center" ></div>
+
+<div class="container mt-5 notes">
+  <div class="row m-t-5 ">
+    <div class="col-md-12 d-flex justify-content-center">
+      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal" >Add Note</button>
+    </div>
+
+    <div class="col-md-3 col-sm-12 mt-5 text-center" *ngFor="let n of notes">
+
+        <div class="alert alert-info">
+          <!-- ***********************************************DropDown Menu********************** -->
+          <div class="dropdown d-flex justify-content-end">
+            <button class="btn btn-secondary " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa fa-ellipsis-v text-info " aria-hidden="true"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <a data-bs-toggle="modal" data-bs-target="#updateModal" >
+                <i class="dropdown-item fa fa-pencil-square text-primary fs-5" aria-hidden="true"  (click)="updateValue(n.title,n.desc,n._id)">Edit</i>
+              </a>
+              <a  data-bs-toggle="modal" data-bs-target="#deleteModal">
+                <i class="dropdown-item fa fa-trash text-danger fs-5" aria-hidden="true" (click)="updateId(n._id)">Delete</i></a>
+            </ul>
+          </div>
+          <!-- *******************************************End*DropDown Menu********************** -->
+          <h2> {{n.title}}</h2>
+          <p> {{n.desc}}</p>
+        </div>
+    </div>
+
+</div> <!--End Of Row-->
+</div> <!--End OF Container-->
+
+<!-- ----------------------------------------------------Modals----------------------------------------------------------------- -->
+<!-- ******************************************************Add modal************************************************************* -->
+<div class="modal " tabindex="-1" id="addModal">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h3 class="modal-title modalEdit">Add</h3>
+<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+<input type="text" placeholder="title" class="form-control" #addTitle >
+<textarea name="" id="" cols="10" rows="5" placeholder="type your note here" class="form-control" #addDesc></textarea>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addNote(addTitle,addDesc)">Add</button>
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"  >Cancel</button>
+</div>
+</div>
+</div>
+</div>
+<!-- ************************************************End  Add Modal***************************************************** -->
+
+
+
+<!-- **************************************************update***modal************************************************************* -->
+<div class="modal" tabindex="-1" id="updateModal">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title modalEdit">Edit</h4>
+<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+<input type="text" placeholder="title" class="form-control" #updateTitle [value]="title" [(ngModel)]="title">
+<textarea name="" id="" cols="10" rows="5" placeholder="type your note here" class="form-control" #updateDesc [(ngModel)]="desc" ></textarea>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateNote()" >Update</button>
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+</div>
+</div>
+</div>
+</div>
+<!-- ************************************************End update  Modal***************************************************** -->
+
+
+<!-- *******************************************************Delete*modal************************************************************* -->
+<div class="modal" tabindex="-1" id="deleteModal">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title">Are Your Sure?</h5>
+<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+<p>Do You Want to Delete this item ?</p>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteNote()" >Delete</button>
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
+<!-- ************************************************End Delete Modal***************************************************** -->

@@ -1,0 +1,25 @@
+.notes h2,p{
+  color: black !important;
+  font-weight: bold;
+  overflow: hidden;
+}
+/* #addModal,#updateModal *{
+  color: black !important;
+}
+#addModal,#updateModal button{
+  color: white !important;
+} */
+input,textarea,h5{
+  color: black !important;
+}
+.modalEdit{
+  color: black  !important;
+  font-weight: bold;
+}
+#profile{
+  position: absolute;
+  left: 5vw;
+  width: 90vw;
+  height:80vh;
+  z-index: -1;
+}
